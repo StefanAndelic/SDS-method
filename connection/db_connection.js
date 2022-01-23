@@ -10,6 +10,6 @@ function db() {
       useUnifiedTopology: true,
     })
     .then(() => console.log(`Connected to ${staging.testing_db} database`))
-    .catch((err) => error("Could not connect to MongoDB..."));
+    .catch((err) => error("Could not connect to DB...Please try again"));
 }
 module.exports = db;

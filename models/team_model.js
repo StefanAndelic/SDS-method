@@ -11,13 +11,6 @@ const Team = mongoose.model(
       minlength: 5,
       maxlength: 255,
     },
-    lastName: {
-      type: String,
-      required: true,
-      trim: true,
-      minlength: 5,
-      maxlength: 255,
-    },
     role: {
       type: String,
       required: true,

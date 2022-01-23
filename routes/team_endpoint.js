@@ -38,7 +38,6 @@ router.post("/", async (req, res) => {
   //event object
   let event_object = new Team({
     firstName: req.body.firstName,
-    lastName: req.body.lastName,
     role: req.body.role,
     email: req.body.email,
   });

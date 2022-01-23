@@ -4,13 +4,6 @@ const db = require("../config/staging_env.json");
 
 const data = [
   {
-    firstName: "User1",
-    lastName: "User2",
-    role: "Data Engineer",
-    email: "user@hotmail.com",
-    password: "user8",
-  },
-  {
     firstName: "Stefan",
     lastName: "Andelic",
     email: "admin@hotmail.com",
@@ -41,7 +34,7 @@ async function seed() {
   mongoose.disconnect();
 
   console.info("Done!");
-  console.info("Test DB populated!");
+  console.info("Team DB table sucessfully populated!");
 }
 
 seed();
