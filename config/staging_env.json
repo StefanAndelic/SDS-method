@@ -1,0 +1,8 @@
+{
+  "jwtPrivateKey": "jwtPrivateKey",
+  "prod_db": "ScaledDataScience_API_prod",
+  "testing_db": "ScaledDataScience_API_test",
+  "port": "3900",
+  "saltRounds": "10",
+  "assetsBaseUrl": ""
+}
