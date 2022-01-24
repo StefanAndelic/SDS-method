@@ -1,5 +1,4 @@
 //utils
-const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const express = require("express");
 
@@ -37,7 +36,8 @@ router.post("/", async (req, res) => {
 
   //event object
   let event_object = new Team({
-    firstName: req.body.firstName,
+    id: req.body.id,
+    name: req.body.name,
     role: req.body.role,
     email: req.body.email,
   });

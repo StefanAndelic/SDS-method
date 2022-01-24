@@ -1,10 +1,18 @@
+const { number } = require("joi");
 const Joi = require("joi");
 const mongoose = require("mongoose");
 //creating a model
 const Team = mongoose.model(
   "Team",
   new mongoose.Schema({
-    firstName: {
+    id: {
+      type: String,
+      required: true,
+      trim: true,
+      // minlength: 5,
+      maxlength: 255,
+    },
+    name: {
       type: String,
       required: true,
       trim: true,
@@ -32,11 +40,10 @@ const Team = mongoose.model(
  */
 function validateMember(member) {
   const schema = Joi.object({
-    id: Joi.string().min(5).max(50),
-    firstName: Joi.string().min(5).max(50).required(),
-    lastName: Joi.string().min(5).max(50),
-    role: Joi.string().min(5).max(50).required(),
-    email: Joi.string().min(5).max(50).required(),
+    id: Joi.string(),
+    name: Joi.string().min(5).max(50),
+    role: Joi.string().min(5).max(50),
+    email: Joi.string().min(5).max(50),
   });
   return schema.validate(member);
 }
