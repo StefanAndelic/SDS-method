@@ -1,6 +1,6 @@
-const { number } = require("joi");
 const Joi = require("joi");
 const mongoose = require("mongoose");
+
 //creating a model
 const Team = mongoose.model(
   "Team",
