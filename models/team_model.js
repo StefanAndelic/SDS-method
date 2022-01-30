@@ -9,7 +9,6 @@ const Team = mongoose.model(
       type: String,
       required: true,
       trim: true,
-      // minlength: 5,
       maxlength: 255,
     },
     name: {
