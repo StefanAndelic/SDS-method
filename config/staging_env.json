@@ -1,5 +1,4 @@
 {
   "testing_db": "ScaledDataScience_API_test",
-  "testing_db2": "ScaledDataScience_API_seed_test",
   "port": "3900"
 }
