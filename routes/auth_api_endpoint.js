@@ -26,7 +26,8 @@ router.post("/", async (req, res) => {
       id: member.id,
       name: member.name,
       email: member.email,
-      roles: member.roles,
+      role: member.role,
+      password: member.password,
     },
 
     "jwtPrivateKey",

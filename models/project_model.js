@@ -32,17 +32,17 @@ const Project = mongoose.model(
       maxlength: 255,
     },
     input: {
-        type: String,
-        required: true,
-        minlength: 5,
-        maxlength: 255,
-      },
+      type: String,
+      required: true,
+      minlength: 5,
+      maxlength: 255,
+    },
     output: {
-        type: String,
-        required: true,
-        minlength: 5,
-        maxlength: 255,
-      },    
+      type: String,
+      required: true,
+      minlength: 5,
+      maxlength: 255,
+    },
   })
 );
 

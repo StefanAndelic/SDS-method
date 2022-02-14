@@ -1,7 +1,6 @@
 //utils
 const express = require("express");
-const { eq } = require("lodash");
-const { Mongoose } = require("mongoose");
+const bcrypt = require("bcrypt");
 
 //model
 const { Team } = require("../models/team_model");
@@ -21,21 +20,35 @@ router.get("/", async (req, res) => {
 /*
  * posts a user to the db
  */
-router.post("/", (req, res, next) => {
+router.post("/", async (req, res, next) => {
+  //check if user already exists in DB
+  let team_member = await Team.findOne({ email: req.body.email });
+  // console.log(team_member);
+
+  if (team_member != null) {
+    return res.status(400).send("Team member already exists");
+  }
+
   const member = new Team({
     id: req.body.id,
     name: req.body.name,
     role: req.body.role,
-    email: req.body.email
+    email: req.body.email,
+    password: req.body.password,
   });
-  member.save().then(result =>{
-    console.log(result)
-  })
-  .catch(err => console.log(err));
+
+  //generates the salt value of 10
+  const salt = await bcrypt.genSalt(10);
+
+  //hashes the password with the generated salt
+  member.password = await bcrypt.hash(member.password, salt);
+
+  member.save();
+
   res.status(201).json({
-    message: 'Handling POST requests to /team',
-    createdMember: member
-  })
+    message: "Team member added",
+    createdMember: member,
+  });
 });
 
 /*
@@ -43,17 +56,20 @@ router.post("/", (req, res, next) => {
  */
 router.delete("/:id", (req, res, next) => {
   const id = req.params.id;
-  Team.deleteMany({id: id })
-  .exec()
-  .then(result => {
-    res.status(200).json(result);
-  })
-  .catch(err =>{
-    console.log(err)
-    res.status(500).json({
-      error: err
+  //if it doesn't exit throw an error
+  if (!id) return res.status(404).send("User does not exist in DB");
+
+  Team.deleteMany({ id: id })
+    .exec()
+    .then((result) => {
+      res.status(200).json(result);
     })
-  })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+      });
+    });
 });
 
 module.exports = router;

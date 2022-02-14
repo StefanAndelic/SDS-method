@@ -1,6 +1,5 @@
 //utils
 const staging = require("../config/staging_env.json");
-
 const mongoose = require("mongoose");
 
 function db() {

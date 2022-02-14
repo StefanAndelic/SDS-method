@@ -59,7 +59,7 @@ async function seed() {
       activity: project.activity,
       task: project.task,
       input: project.input,
-      output: project.output, 
+      output: project.output,
     }).save();
 
     await Project.insertMany(project);
@@ -68,7 +68,7 @@ async function seed() {
   mongoose.disconnect();
 
   console.info("Done!");
-  console.info("Team DB table sucessfully populated!");
+  console.info("Project DB table sucessfully populated!");
 }
 
 seed();
